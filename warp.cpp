@@ -96,7 +96,7 @@ void inverseMap(int inW, int inH, unsigned char *inPixmap)
 
 	for (int i = 0; i < outH; ++i) {
 		for (int j = 0; j < outW; ++j) {
-			/** Calculate corresponding coordinates */
+			/** Calculate corresponding coordinates, use nearest-neighbour interpolation */
 			x = (float)(j + 0.5) / outW;
 			y = (float)(i + 0.5) / outH;
 			u = U(x, y);
@@ -104,8 +104,12 @@ void inverseMap(int inW, int inH, unsigned char *inPixmap)
 			k = (int)floor(v * inH);
 			l = (int)floor(u * inW);
 
-			for (int channel = 0; channel < RGBA; ++channel)
+			if (k < 0 || k > inH || l < 0 || l > inW) 
+				continue;
+
+			for (int channel = 0; channel < RGBA; ++channel) 
 				outPixmap[(i * outW + j) * RGBA + channel] = inPixmap[(k * inW + l) * RGBA + channel];
+
 		}
 	}
 }

@@ -13,6 +13,7 @@
 
 /** Special vars */
 
+static const double PI = 3.14159265;
 static const unsigned char ESC = 27;
 
 /** ImageIO handlers */
@@ -28,7 +29,7 @@ static ImageIO ioWarped = ImageIO();
 
 float X(float u, float v)
 {
-	return u + 2 * v;
+	return u + v * cos(45 * PI / 180.0);
 }
 
 float Y(float u, float v)
@@ -38,7 +39,7 @@ float Y(float u, float v)
 
 float U(float x, float y)
 {
-	return x - 2 * y;
+	return x - y * cos(45 * PI / 180.0);
 }
 
 float V(float x, float y)

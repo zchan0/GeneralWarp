@@ -13,15 +13,23 @@ else
   endif
 endif
 
+EXE			= warp tile
 HFILES  = ImageIO/ImageIO.${H} ImageIO/Image.${H}
 OBJS    = ImageIO/ImageIO.o ImageIO/Image.o 
-PROJECT = warp
 
-${PROJECT}:	${OBJS} ${PROJECT}.o
-	${CC} ${LFLAGS} -o ${PROJECT} ${OBJS} ${PROJECT}.o ${LDFLAGS}
+all:	${EXE}
 
-${PROJECT}.o: ${PROJECT}.${C} ${HFILES}
-	${CC} ${CFLAGS} -c ${PROJECT}.${C}
+warp:	${OBJS} warp.o
+	${CC} ${LFLAGS} -o warp ${OBJS} warp.o ${LDFLAGS}
+
+warp.o: warp.${C} ${HFILES}
+	${CC} ${CFLAGS} -c warp.${C}
+
+tile:	${OBJS} tile.o
+	${CC} ${LFLAGS} -o tile ${OBJS} tile.o ${LDFLAGS}
+
+tile.o: tile.${C} ${HFILES}
+	${CC} ${CFLAGS} -c tile.${C}
 
 ImageIO.o: ImageIO/ImageIO.${C} ${HFILES}
 	${CC} ${CFLAGS} -c ImageIO.${C} 
@@ -30,4 +38,4 @@ Image.o: ImageIO/Image.${C} ${HFILES}
 	${CC} ${CFLAGS} -c Image.${C} 
 
 clean:
-	rm -f core.* *.o *~ ${PROJECT} ${OBJS}
+	rm -f core.* *.o *~ ${EXE} ${OBJS}

@@ -55,7 +55,7 @@ void setupOutPixmap(int w, int h)
 		for (int j = 0; j < w; ++j) 
 			for (int channel = 0; channel < RGBA; ++channel)
 				/** Init alpha channel to 0, make no color value pixel to be transparent */
-				outPixmap[(i * h) * RGBA + channel] = 0;
+				outPixmap[(i * w + j) * RGBA + channel] = 0;
 }
 
 /** Calculate output image size */

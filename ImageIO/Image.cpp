@@ -13,14 +13,8 @@ Image::Image()
 
 Image::~Image()
 {
-	if (pixmap != NULL) {
-		delete [] pixmap;
-		std::cout << "delete " << filename << " pixmap" << std::endl;
-	}
-	if (floatPixmap != NULL) {
-		delete [] floatPixmap;
-		std::cout << "delete  " << filename << " floatPixmap" << std::endl;	
-	}
+	// if (pixmap != NULL) delete [] pixmap;
+	// if (floatPixmap != NULL)	delete [] floatPixmap;
 }
 
 Image::Image(const Image& img)

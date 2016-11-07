@@ -146,7 +146,7 @@ bool parseCommandLine(int argc, char* argv[])
     return true; break;
 
   default:
-  	std::cerr << "Usage: warp inimage.png [outimage.png]" << std:: endl;
+  	std::cerr << "Usage: tile row_num col_num inimage.png outimage.png" << std:: endl;
     exit(1);
   	return false; break;
   }
